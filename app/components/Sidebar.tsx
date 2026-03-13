@@ -75,14 +75,13 @@ export default function Sidebar({
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-[280px] transform overflow-y-auto border-r border-gray-100 bg-white transition-transform duration-200 ease-in-out lg:translate-x-0 ${
-          open ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-[280px] transform overflow-y-auto border-r border-amber-100/70 bg-white/95 shadow-[0_0_32px_rgba(245,158,11,0.08)] backdrop-blur transition-transform duration-200 ease-in-out lg:top-[4.75rem] lg:bottom-3 lg:left-4 lg:h-auto lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
-        <nav className="pl-12 pr-6 py-6">
+        <nav className="px-5 py-8 sm:px-6">
           {navSections.map((section) => (
-            <div key={section.title} className="mb-6">
-              <h3 className="mb-2 px-6 text-[11px] font-bold uppercase tracking-wider text-amber-700/70">
+            <div key={section.title} className="mb-8 last:mb-0">
+              <h3 className="mb-3 px-4 text-[11px] font-bold uppercase tracking-widest text-amber-800/60 transition-colors group-hover:text-amber-700">
                 {section.title}
               </h3>
               <ul className="space-y-1">
@@ -91,9 +90,8 @@ export default function Sidebar({
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className={`nav-link ${
-                        pathname === item.href ? "active" : ""
-                      }`}
+                      className={`nav-link ${pathname === item.href ? "active" : ""
+                        }`}
                     >
                       {item.label}
                     </Link>

@@ -18,15 +18,15 @@ export default function DocsShell({ children }: { children: React.ReactNode }) {
           This invisible placeholder reserves the same 280px on desktop,
           keeping main content from sliding under the sidebar.
         */}
-        <div className="hidden w-[280px] shrink-0 lg:block" aria-hidden="true" />
+        <div className="hidden shrink-0 lg:block lg:w-[296px]" aria-hidden="true" />
 
         {/* Sidebar rendered outside the placeholder so z-index works correctly */}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main content — min-w-0 prevents flex overflow */}
         <main className="flex min-w-0 flex-1 flex-col">
-          <div className="w-full max-w-4xl flex-1 pl-24 pr-8 py-12 sm:pl-32 sm:pr-12 lg:pl-40 lg:pr-16">
-            <div className="docs-content">{children}</div>
+          <div className="w-full max-w-5xl flex-1 px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-16">
+            <div className="docs-content docs-surface">{children}</div>
           </div>
           <Footer />
         </main>

@@ -16,7 +16,7 @@ export default function Header({
           {/* Mobile menu button */}
           <button
             onClick={onMenuToggle}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:bg-amber-50 hover:text-amber-700 lg:hidden"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-600 transition-all hover:bg-amber-100 hover:text-amber-900 active:scale-95 lg:hidden"
             aria-label="Toggle navigation"
           >
             <svg
@@ -51,13 +51,13 @@ export default function Header({
         <div className="flex items-center gap-3">
           <Link
             href="/docs"
-            className="hidden rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-amber-50 hover:text-amber-800 sm:inline-flex"
+            className="hidden cursor-pointer rounded-md px-3.5 py-2 text-sm font-semibold text-gray-600 transition-all hover:bg-amber-100 hover:text-amber-900 sm:inline-flex"
           >
             Documentation
           </Link>
           <Link
             href="/about"
-            className="hidden rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-amber-50 hover:text-amber-800 sm:inline-flex"
+            className="hidden cursor-pointer rounded-md px-3.5 py-2 text-sm font-semibold text-gray-600 transition-all hover:bg-amber-100 hover:text-amber-900 sm:inline-flex"
           >
             About Us
           </Link>
@@ -65,7 +65,7 @@ export default function Header({
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-amber-50 hover:text-amber-700"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all hover:bg-amber-100 hover:text-amber-900 active:scale-95"
             aria-label="GitHub"
           >
             <svg
