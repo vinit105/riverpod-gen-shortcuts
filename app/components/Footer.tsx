@@ -107,6 +107,15 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
+
+              <li>
+                <Link
+                  href="/license.txt"
+                  className="text-xs text-gray-500 transition-colors hover:text-amber-700"
+                >
+                  License
+                </Link>
+              </li>
             </ul>
           </div>
 
