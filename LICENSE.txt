@@ -1,0 +1,9 @@
+Riverpod Gen Shortcuts License
+
+Copyright (c) 2026 Riverpod Community
+
+This plugin is proprietary software.
+
+You may install and use this plugin in IntelliJ-based IDEs.
+You may not copy, modify, redistribute, reverse engineer,
+or resell this software without permission from the author.
