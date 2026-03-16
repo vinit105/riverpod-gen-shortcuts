@@ -1,0 +1,30 @@
+Riverpod Gen Shortcuts – License
+
+Copyright (c) 2026 Riverpod Gen Shorts- developed by Vinit(Riverpod Community) All rights reserved.
+
+This plugin is free to download and use in IntelliJ-based IDEs.
+
+The source code of this plugin is private. This restriction exists to
+prevent unauthorized copying, modification, redistribution, or other
+forms of code infringement.
+
+You may NOT:
+- Copy the source code
+- Modify or reverse engineer the software
+- Redistribute or resell any part of this plugin
+- Use the code in other projects without explicit permission
+
+If you are interested in continuing development, contributing to the
+project, or accessing the source code, you may request permission
+from the author.
+
+Source access may be granted to trusted contributors or sponsors
+at the discretion of the author.
+
+For contribution requests, collaboration, or sponsorship inquiries,
+please contact the author.
+
+Created and maintained by:
+Vinit
+Author & Developer of Riverpod Gen Shortcuts
+Riverpod Community

@@ -62,7 +62,7 @@ export default function Header({
           {/* Mobile menu button */}
           <button
             onClick={onMenuToggle}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:bg-amber-50 hover:text-amber-700 lg:hidden"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-600 transition-all hover:bg-amber-100 hover:text-amber-900 active:scale-95 lg:hidden"
             aria-label="Toggle navigation"
           >
             <svg
