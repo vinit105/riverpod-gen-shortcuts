@@ -1,53 +1,71 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
+about: Thank you for reporting a problem. Please fill out the information below to
+  help us investigate the issue.
+title: "[BUG]-> "
 labels: bug
 assignees: vinit105
 
 ---
 
+Plugin Information
+
 Plugin Version:
-JetBrains IDE + Version:
+(e.g. 1.2.0)
 
-Describe the bug:
+JetBrains IDE:
+(e.g. IntelliJ IDEA, WebStorm, PyCharm, Android Studio)
+
+IDE Version:
+(e.g. 2024.3)
+
+Operating System:
+(e.g. macOS, Windows 11, Linux)
+
+Describe the Bug
+
 What happened?
+Please provide a clear description of the issue.
 
-Steps to reproduce:
+Steps to Reproduce
+
 1.
 2.
 3.
+4.
 
-Expected behavior:
+Expected Behavior
 
-Screenshots / logs:
+What did you expect to happen?
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+Screenshots
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+If possible, attach screenshots or screen recordings that show the problem.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Logs (Very Helpful)
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+If possible, please attach IDE logs.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+You can collect logs from the JetBrains IDE:
+Help → Collect Logs and Diagnostic Data
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+Log locations:
 
-**Additional context**
-Add any other context about the problem here.
+macOS
+~/Library/Logs/JetBrains/<IDE>
+
+Windows
+%USERPROFILE%\.IntelliJIdea<version>\system\log
+
+Linux
+~/.cache/JetBrains/<IDE>/log
+
+Please attach the log files or paste relevant error messages.
+
+Additional Context
+
+Add any other information that may help understand the problem.
+For example:
+- Does the issue happen every time?
+- Did it start after updating the IDE or plugin?
+- Any specific project setup?
