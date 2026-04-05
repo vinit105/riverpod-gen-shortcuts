@@ -31,7 +31,7 @@ export default function Header({
             <div className="text-sm text-yellow-800">
               <strong>📢 Beta Documentation</strong> – This documentation and plugin are under active development. 
               The plugin is live and ready to explore, but docs are in beta. 
-              Final release coming in <strong>April 2026</strong>. 
+              Final release coming in <strong>May 2026</strong>. 
               Please explore, test, and <a href="https://github.com/vinit105/riverpod-gen-shortcuts/discussions" className="underline font-semibold hover:text-yellow-900">share feedback</a>!
             </div>
           </div>
