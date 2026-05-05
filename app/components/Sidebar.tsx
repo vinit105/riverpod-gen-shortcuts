@@ -12,7 +12,7 @@ const navSections: NavSection[] = [
   {
     title: "Getting Started",
     items: [
-      { label: "Introduction", href: "/docs" },
+      { label: "Introduction", href: "/" },
       { label: "Installation", href: "/docs/installation" },
       { label: "Quick Start", href: "/docs/quick-start" },
     ],
@@ -61,6 +61,7 @@ interface SidebarProps {
   onClose: () => void;
 }
 
+
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const pathname = usePathname();
 
@@ -91,8 +92,8 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                         onClick={onClose}
                         className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                           isActive
-                            ? 'border-l-2 border-amber-400 bg-amber-50/70 text-amber-800 font-semibold'
-                            : 'text-slate-600 hover:border-l-2 hover:border-amber-200 hover:bg-amber-50/40 hover:text-slate-900'
+                            ? 'border-l-2 border-amber-200 bg-amber-50/70 text-amber-800 font-semibold'
+                            : 'text-slate-600 hover:bg-amber-50/40 hover:text-slate-900'
                         }`}
                       >
                         {item.label}

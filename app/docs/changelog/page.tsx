@@ -19,7 +19,7 @@ export default function ChangelogPage() {
         {/* Version 2.1.0 */}
         <div className="rounded-lg border border-green-200 bg-green-50/50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v2.1.0</h2>
+            <h2 className="mb-0! mt-0!">v2.1.0</h2>
             <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
               Latest
             </span>
@@ -54,7 +54,7 @@ export default function ChangelogPage() {
         {/* Version 2.0.0 */}
         <div className="rounded-lg border border-orange-200 bg-orange-50/50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v2.0.0</h2>
+            <h2 className="mb-0! mt-0!">v2.0.0</h2>
             <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-medium text-orange-800">
               Breaking Changes
             </span>
@@ -89,7 +89,7 @@ export default function ChangelogPage() {
         {/* Version 1.8.2 */}
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v1.8.2</h2>
+            <h2 className="mb-0! mt-0!">v1.8.2</h2>
             <span className="text-sm text-gray-500">January 28, 2026</span>
           </div>
 
@@ -111,7 +111,7 @@ export default function ChangelogPage() {
         {/* Version 1.8.0 */}
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v1.8.0</h2>
+            <h2 className="mb-0! mt-0!">v1.8.0</h2>
             <span className="text-sm text-gray-500">December 10, 2025</span>
           </div>
 
@@ -134,7 +134,7 @@ export default function ChangelogPage() {
         {/* Version 1.7.0 */}
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v1.7.0</h2>
+            <h2 className="mb-0! mt-0!">v1.7.0</h2>
             <span className="text-sm text-gray-500">November 22, 2025</span>
           </div>
 
@@ -157,7 +157,7 @@ export default function ChangelogPage() {
         {/* Version 1.6.0 */}
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="!mb-0 !mt-0">v1.6.0</h2>
+            <h2 className="mb-0! mt-0!">v1.6.0</h2>
             <span className="text-sm text-gray-500">October 15, 2025</span>
           </div>
 
@@ -185,8 +185,8 @@ export default function ChangelogPage() {
       </p>
 
       <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
-        <h3 className="!mt-0">🚀 Roadmap v2.2.0</h3>
-        <ul className="!mb-0">
+        <h3 className="mt-0!">🚀 Roadmap v2.2.0</h3>
+        <ul className="mb-0!">
           <li>Enhanced debugging tools and provider inspector</li>
           <li>Custom code generation templates</li>
           <li>Integration with popular state management patterns</li>
@@ -196,10 +196,10 @@ export default function ChangelogPage() {
       </div>
 
       <div className="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-6">
-        <h3 className="!mt-0 text-lg font-semibold text-amber-800">
+        <h3 className="mt-0! text-lg font-semibold text-amber-800">
           📢 Stay Updated
         </h3>
-        <p className="!mb-0 text-amber-700">
+        <p className="mb-0! text-amber-700">
           Follow our{" "}
           <a href="https://github.com" className="font-semibold underline">
             GitHub repository

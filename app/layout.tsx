@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import './globals.css';
+import DocsShell from "./components/DocsShell";
 
 export const metadata: Metadata = {
   title: {
@@ -57,7 +58,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <DocsShell>
+          <div className="mx-auto max-w-6xl space-y-20 px-6 py-10">
+            {children}
+          </div>
+        </DocsShell>
+      </body>
     </html>
   );
 }
