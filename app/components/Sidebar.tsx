@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -56,47 +56,50 @@ const navSections: NavSection[] = [
   },
 ];
 
-export default function Sidebar({
-  open,
-  onClose,
-}: {
+interface SidebarProps {
   open: boolean;
   onClose: () => void;
-}) {
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const pathname = usePathname();
 
   return (
     <>
-      {/* Mobile overlay */}
       <div
-        className={`sidebar-overlay ${open ? "open" : ""} lg:hidden`}
         onClick={onClose}
+        className={`fixed inset-0 bg-[rgba(0,0,0,0.4)] z-40 transition-opacity duration-200 lg:hidden ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       />
 
-      {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-[280px] transform overflow-y-auto border-r border-amber-100/70 bg-white/95 shadow-[0_0_32px_rgba(245,158,11,0.08)] backdrop-blur transition-transform duration-200 ease-in-out lg:top-[4.75rem] lg:bottom-3 lg:left-4 lg:h-auto lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-(--sidebar-width) transform overflow-y-auto border-r border-amber-100/70 bg-white/98 shadow-[0_0_32px_rgba(245,158,11,0.06)] backdrop-blur-sm transition-transform duration-200 ease-in-out lg:sticky lg:top-16 lg:z-0 lg:h-[calc(100vh-4rem)] lg:translate-x-0 lg:shadow-none lg:backdrop-blur-0 ${open ? "translate-x-0" : "-translate-x-full"
           }`}
       >
-        <nav className="px-5 py-8 sm:px-6">
+        <nav className="px-5 py-8 sm:px-6 lg:py-10">
           {navSections.map((section) => (
             <div key={section.title} className="mb-8 last:mb-0">
-              <h3 className="mb-3 px-4 text-[11px] font-bold uppercase tracking-widest text-amber-800/60 transition-colors group-hover:text-amber-700">
+              <h3 className="mb-3 px-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {section.title}
               </h3>
               <ul className="space-y-1">
-                {section.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className={`nav-link ${pathname === item.href ? "active" : ""
+                {section.items.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={onClose}
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                          isActive
+                            ? 'border-l-2 border-amber-400 bg-amber-50/70 text-amber-800 font-semibold'
+                            : 'text-slate-600 hover:border-l-2 hover:border-amber-200 hover:bg-amber-50/40 hover:text-slate-900'
                         }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
@@ -105,3 +108,5 @@ export default function Sidebar({
     </>
   );
 }
+
+export default Sidebar;
