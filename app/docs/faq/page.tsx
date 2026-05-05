@@ -1,124 +1,231 @@
-import DocsShell from "../../components/DocsShell";
 import { Metadata } from "next";
+import type { ReactNode } from "react";
+import CodeBloack from "../../components/CodeBloack";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description: "Frequently asked questions about Riverpod Gen Shortcuts",
 };
 
+const gettingStartedItems = [
+  "Automatic disposal and lifecycle management",
+  "Type-safe provider references",
+  "Reduced boilerplate code",
+  "Better IDE support and refactoring",
+];
+
+const buildRunnerChecks = [
+  "Make sure you have the part directive in your file",
+  "Verify riverpod_generator is in dev_dependencies",
+  "Check for syntax errors in your provider code",
+  "Run flutter clean and try again",
+  "Ensure file names match the part directive",
+];
+
+const customizationItems = [
+  "Use @Riverpod(keepAlive: true) to prevent disposal",
+  "Add dependencies with the dependencies parameter",
+  "Control caching behavior with provider modifiers",
+];
+
+const performanceItems = [
+  "Use select to watch only specific parts of state",
+  "Implement efficient == operators for custom state classes",
+  "Use keepAlive for expensive computations",
+  "Avoid creating providers inside build methods",
+  "Use family providers for parameterized data",
+];
+
+const migrationItems = [
+  "Replace ChangeNotifierProvider with NotifierProvider",
+  "Update Consumer widgets to ConsumerWidget",
+  "Change context.read() to ref.read()",
+  "Replace context.watch() with ref.watch()",
+  "Gradually adopt code generation for new providers",
+];
+
+const ideItems = [
+  "Visual Studio Code (Riverpod Snippets extension)",
+  "IntelliJ IDEA / Android Studio (Live Templates)",
+  "Vim/Neovim (with LSP support)",
+];
+
+const autocompleteItems = [
+  "Run build_runner to generate provider files",
+  "Restart your IDE after generating code",
+  "Use dart analyze to check for issues",
+  "Enable Dart/Flutter language server features",
+];
+
+function InlineCode({ children }: { children: ReactNode }) {
+  return (
+    <code className="rounded bg-slate-100 px-1.5 py-0.5 text-xs">
+      {children}
+    </code>
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2 text-sm text-slate-700">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-2">
+          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Question({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <details className="rounded-xl border border-slate-200 bg-white p-4">
+      <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+        {title}
+      </summary>
+      <div className="mt-4 space-y-4 text-sm leading-6 text-slate-600">
+        {children}
+      </div>
+    </details>
+  );
+}
+
 export default function FAQPage() {
   return (
-    <DocsShell>
-      <h1>Frequently Asked Questions</h1>
-      <p>
-        Common questions and answers about Riverpod Gen Shortcuts, code
-        generation, and best practices.
-      </p>
+    <>
+      <section className="space-y-4">
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          Frequently Asked Questions
+        </h1>
+        <p className="text-base leading-7 text-slate-600">
+          Common questions and answers about Riverpod Gen Shortcuts, code
+          generation, and best practices.
+        </p>
+      </section>
 
-      <h2>Getting Started</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">
+          Getting Started
+        </h2>
 
-      <h3>Q: Do I need to use code generation with Riverpod?</h3>
-      <p>
-        No, code generation is optional. You can use Riverpod with manual
-        provider definitions. However, code generation provides several benefits:
-      </p>
-      <ul>
-        <li>Automatic disposal and lifecycle management</li>
-        <li>Type-safe provider references</li>
-        <li>Reduced boilerplate code</li>
-        <li>Better IDE support and refactoring</li>
-      </ul>
+        <div className="space-y-3">
+          <Question title="Do I need to use code generation with Riverpod?">
+            <p>
+              No, code generation is optional. You can use Riverpod with manual
+              provider definitions. However, code generation provides several
+              benefits:
+            </p>
+            <BulletList items={gettingStartedItems} />
+          </Question>
 
-      <h3>Q: Can I mix generated and manual providers?</h3>
-      <p>
-        Yes! You can use both generated providers (with <code>@riverpod</code>)
-        and manual providers in the same project. This allows gradual migration
-        or mixing approaches based on your needs.
-      </p>
+          <Question title="Can I mix generated and manual providers?">
+            <p>
+              Yes. You can use both generated providers with{" "}
+              <InlineCode>@riverpod</InlineCode> and manual providers in the
+              same project. This allows gradual migration or mixing approaches
+              based on your needs.
+            </p>
+          </Question>
 
-      <h3>Q: Which build_runner command should I use?</h3>
-      <p>For development:</p>
-      <pre>
-        <code>dart run build_runner watch</code>
-      </pre>
-      <p>For one-time builds:</p>
-      <pre>
-        <code>dart run build_runner build</code>
-      </pre>
-      <p>To clean generated files:</p>
-      <pre>
-        <code>dart run build_runner clean</code>
-      </pre>
+          <Question title="Which build_runner command should I use?">
+            <p>For development:</p>
+            <CodeBloack
+              language="bash"
+              fileName="terminal"
+              code="dart run build_runner watch"
+            />
+            <p>For one-time builds:</p>
+            <CodeBloack
+              language="bash"
+              fileName="terminal"
+              code="dart run build_runner build"
+            />
+            <p>To clean generated files:</p>
+            <CodeBloack
+              language="bash"
+              fileName="terminal"
+              code="dart run build_runner clean"
+            />
+          </Question>
+        </div>
+      </section>
 
-      <h2>Common Issues</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">Common Issues</h2>
 
-      <h3>Q: Build runner isn't generating files. What's wrong?</h3>
-      <p>Check these common issues:</p>
-      <ul>
-        <li>Make sure you have the <code>part</code> directive in your file</li>
-        <li>Verify <code>riverpod_generator</code> is in <code>dev_dependencies</code></li>
-        <li>Check for syntax errors in your provider code</li>
-        <li>Run <code>flutter clean</code> and try again</li>
-        <li>Ensure file names match the part directive</li>
-      </ul>
+        <div className="space-y-3">
+          <Question title="Build runner is not generating files. What is wrong?">
+            <p>Check these common issues:</p>
+            <BulletList items={buildRunnerChecks} />
+          </Question>
 
-      <h3>Q: I get "part of" errors. How do I fix them?</h3>
-      <p>
-        Make sure your part directive matches the file name exactly. For a file
-        named <code>counter.dart</code>, use:
-      </p>
-      <pre>
-        <code>part 'counter.g.dart';</code>
-      </pre>
-      <p>
-        The generated file will be <code>counter.g.dart</code> and should contain:
-      </p>
-      <pre>
-        <code>part of 'counter.dart';</code>
-      </pre>
+          <Question title="I get part of errors. How do I fix them?">
+            <p>
+              Make sure your part directive matches the file name exactly. For a
+              file named <InlineCode>counter.dart</InlineCode>, use:
+            </p>
+            <CodeBloack
+              language="dart"
+              fileName="counter.dart"
+              code="part 'counter.g.dart';"
+            />
+            <p>
+              The generated file will be <InlineCode>counter.g.dart</InlineCode>{" "}
+              and should contain:
+            </p>
+            <CodeBloack
+              language="dart"
+              fileName="counter.g.dart"
+              code="part of 'counter.dart';"
+            />
+          </Question>
 
-      <h3>Q: Can I customize the generated code?</h3>
-      <p>
-        Limited customization is available through annotations. You can:
-      </p>
-      <ul>
-        <li>Use <code>@Riverpod(keepAlive: true)</code> to prevent disposal</li>
-        <li>Add dependencies with the <code>dependencies</code> parameter</li>
-        <li>Control caching behavior with provider modifiers</li>
-      </ul>
+          <Question title="Can I customize the generated code?">
+            <p>Limited customization is available through annotations. You can:</p>
+            <BulletList items={customizationItems} />
+          </Question>
+        </div>
+      </section>
 
-      <h2>Performance</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">Performance</h2>
 
-      <h3>Q: How do I optimize provider performance?</h3>
-      <p>Follow these best practices:</p>
-      <ul>
-        <li>Use <code>select</code> to watch only specific parts of state</li>
-        <li>Implement efficient <code>==</code> operators for custom state classes</li>
-        <li>Use <code>keepAlive</code> for expensive computations</li>
-        <li>Avoid creating providers inside build methods</li>
-        <li>Use family providers for parameterized data</li>
-      </ul>
+        <div className="space-y-3">
+          <Question title="How do I optimize provider performance?">
+            <p>Follow these best practices:</p>
+            <BulletList items={performanceItems} />
+          </Question>
 
-      <h3>Q: When should I use family providers?</h3>
-      <p>
-        Use family providers when you need multiple instances of the same
-        provider with different parameters:
-      </p>
-      <pre>
-        <code>{`@riverpod
+          <Question title="When should I use family providers?">
+            <p>
+              Use family providers when you need multiple instances of the same
+              provider with different parameters:
+            </p>
+            <CodeBloack
+              language="dart"
+              fileName="user_provider.dart"
+              code={`@riverpod
 Future<User> user(UserRef ref, int userId) async {
   return await userRepository.getUser(userId);
 }
 
-// Usage: ref.watch(userProvider(123))`}</code>
-      </pre>
+// Usage: ref.watch(userProvider(123))`}
+            />
+          </Question>
 
-      <h3>Q: How do I handle provider disposal?</h3>
-      <p>
-        Generated providers handle disposal automatically. For manual control:
-      </p>
-      <pre>
-        <code>{`@Riverpod(keepAlive: false) // Auto-dispose (default)
+          <Question title="How do I handle provider disposal?">
+            <p>Generated providers handle disposal automatically. For manual control:</p>
+            <CodeBloack
+              language="dart"
+              fileName="disposal.dart"
+              code={`@Riverpod(keepAlive: false) // Auto-dispose (default)
 @Riverpod(keepAlive: true)  // Keep alive
 
 // Or use ref.keepAlive() conditionally:
@@ -126,15 +233,24 @@ Future<User> user(UserRef ref, int userId) async {
 String expensiveComputation(ExpensiveComputationRef ref) {
   ref.keepAlive(); // Prevent disposal
   return performExpensiveOperation();
-}`}</code>
-      </pre>
+}`}
+            />
+          </Question>
+        </div>
+      </section>
 
-      <h2>Testing</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">Testing</h2>
 
-      <h3>Q: How do I test providers?</h3>
-      <p>Use <code>ProviderContainer</code> for unit testing:</p>
-      <pre>
-        <code>{`test('counter increments correctly', () {
+        <div className="space-y-3">
+          <Question title="How do I test providers?">
+            <p>
+              Use <InlineCode>ProviderContainer</InlineCode> for unit testing:
+            </p>
+            <CodeBloack
+              language="dart"
+              fileName="counter_test.dart"
+              code={`test('counter increments correctly', () {
   final container = ProviderContainer();
   
   expect(container.read(counterProvider), 0);
@@ -142,71 +258,84 @@ String expensiveComputation(ExpensiveComputationRef ref) {
   container.read(counterProvider.notifier).increment();
   
   expect(container.read(counterProvider), 1);
-});`}</code>
-      </pre>
+});`}
+            />
+          </Question>
 
-      <h3>Q: Can I mock providers for testing?</h3>
-      <p>Yes, use overrides:</p>
-      <pre>
-        <code>{`final container = ProviderContainer(
+          <Question title="Can I mock providers for testing?">
+            <p>Yes, use overrides:</p>
+            <CodeBloack
+              language="dart"
+              fileName="provider_override.dart"
+              code={`final container = ProviderContainer(
   overrides: [
     userRepositoryProvider.overrideWithValue(mockUserRepository),
   ],
-);`}</code>
-      </pre>
+);`}
+            />
+          </Question>
+        </div>
+      </section>
 
-      <h2>Migration</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">Migration</h2>
 
-      <h3>Q: How do I migrate from Provider to Riverpod?</h3>
-      <p>Follow these migration steps:</p>
-      <ol>
-        <li>Replace <code>ChangeNotifierProvider</code> with <code>NotifierProvider</code></li>
-        <li>Update <code>Consumer</code> widgets to <code>ConsumerWidget</code></li>
-        <li>Change <code>context.read()</code> to <code>ref.read()</code></li>
-        <li>Replace <code>context.watch()</code> with <code>ref.watch()</code></li>
-        <li>Gradually adopt code generation for new providers</li>
-      </ol>
+        <div className="space-y-3">
+          <Question title="How do I migrate from Provider to Riverpod?">
+            <p>Follow these migration steps:</p>
+            <ol className="space-y-2 text-sm text-slate-700">
+              {migrationItems.map((item, index) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold text-slate-600">
+                    {index + 1}
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ol>
+          </Question>
 
-      <h3>Q: Can I use Riverpod with existing Provider code?</h3>
-      <p>
-        Yes, but they use different widget trees. You'll need separate
-        <code>ProviderScope</code> and <code>MultiProvider</code> widgets until
-        migration is complete.
-      </p>
+          <Question title="Can I use Riverpod with existing Provider code?">
+            <p>
+              Yes, but they use different widget trees. You will need separate{" "}
+              <InlineCode>ProviderScope</InlineCode> and{" "}
+              <InlineCode>MultiProvider</InlineCode> widgets until migration is
+              complete.
+            </p>
+          </Question>
+        </div>
+      </section>
 
-      <h2>IDE Support</h2>
+      <section className="space-y-5">
+        <h2 className="text-xl font-semibold text-slate-900">IDE Support</h2>
 
-      <h3>Q: Which IDEs support Riverpod snippets?</h3>
-      <p>We provide snippets and extensions for:</p>
-      <ul>
-        <li>Visual Studio Code (Riverpod Snippets extension)</li>
-        <li>IntelliJ IDEA / Android Studio (Live Templates)</li>
-        <li>Vim/Neovim (with LSP support)</li>
-      </ul>
+        <div className="space-y-3">
+          <Question title="Which IDEs support Riverpod snippets?">
+            <p>We provide snippets and extensions for:</p>
+            <BulletList items={ideItems} />
+          </Question>
 
-      <h3>Q: How do I get better autocomplete for providers?</h3>
-      <p>
-        Make sure to:
-      </p>
-      <ul>
-        <li>Run build_runner to generate provider files</li>
-        <li>Restart your IDE after generating code</li>
-        <li>Use <code>dart analyze</code> to check for issues</li>
-        <li>Enable Dart/Flutter language server features</li>
-      </ul>
+          <Question title="How do I get better autocomplete for providers?">
+            <p>Make sure to:</p>
+            <BulletList items={autocompleteItems} />
+          </Question>
+        </div>
+      </section>
 
-      <div className="mt-8 rounded-lg border border-blue-200 bg-blue-50 p-6">
-        <h3 className="!mt-0 text-lg font-semibold text-blue-800">
-          Still have questions?
-        </h3>
-        <p className="!mb-0 text-blue-700">
-          Can't find what you're looking for? Join our{" "}
-          <a href="https://github.com" className="font-semibold underline">
-            GitHub discussions
-          </a>{" "}
-          or open an issue. Our community is here to help!
-        </p>
-      </div>
-    </DocsShell>
+      <section>
+        <div className="rounded-xl border border-blue-200 bg-blue-50 p-6">
+          <h3 className="text-lg font-semibold text-blue-800">
+            Still have questions?
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-blue-700">
+            Can&apos;t find what you&apos;re looking for? Join our{" "}
+            <a href="https://github.com" className="font-semibold underline">
+              GitHub discussions
+            </a>{" "}
+            or open an issue. Our community is here to help.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
