@@ -57,13 +57,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
-        <DocsShell>
-          <div className="mx-auto max-w-6xl space-y-20 px-6 py-10">
-            {children}
-          </div>
-        </DocsShell>
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );
