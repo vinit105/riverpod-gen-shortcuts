@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -17,18 +16,11 @@ export default function DocsShell({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-[#fcfbf7] text-slate-900">
       <Header onMenuToggle={() => setSidebarOpen((v) => !v)} />
 
       <div className="relative flex flex-1">
-        {/*
-          Sidebar is fixed-positioned so it floats over the page.
-          This invisible placeholder reserves the same 280px on desktop,
-          keeping main content from sliding under the sidebar.
-        */}
-        <div className="hidden shrink-0 lg:block lg:w-[296px]" aria-hidden="true" />
 
-        {/* Sidebar rendered outside the placeholder so z-index works correctly */}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main content — min-w-0 prevents flex overflow */}

@@ -1,26 +1,18 @@
-import DocsShell from "../../components/DocsShell";
 import { Metadata } from "next";
+import CodeBloack from "../../components/CodeBloack";
 
 export const metadata: Metadata = {
   title: "Examples",
   description: "Real-world Riverpod examples and code patterns",
 };
 
-export default function ExamplesPage() {
-  return (
-    <DocsShell>
-      <h1>Examples</h1>
-      <p>
-        Learn Riverpod through real-world examples. Each example includes full
-        source code, explanation, and best practices.
-      </p>
-
-      <h2>Counter App</h2>
-      <p>
-        The classic Flutter counter app built with Riverpod state management.
-      </p>
-      <pre>
-        <code>{`// providers/counter.dart
+const examples = [
+  {
+    title: "Counter App",
+    description:
+      "The classic Flutter counter app built with Riverpod state management.",
+    fileName: "counter_example.dart",
+    code: `// providers/counter.dart
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter.g.dart';
@@ -69,15 +61,14 @@ class CounterApp extends ConsumerWidget {
       ),
     );
   }
-}`}</code>
-      </pre>
-
-      <h2>HTTP API Integration</h2>
-      <p>
-        Fetching data from REST APIs with error handling and loading states.
-      </p>
-      <pre>
-        <code>{`// models/user.dart
+}`,
+  },
+  {
+    title: "HTTP API Integration",
+    description:
+      "Fetching data from REST APIs with error handling and loading states.",
+    fileName: "users_example.dart",
+    code: `// models/user.dart
 class User {
   final int id;
   final String name;
@@ -152,15 +143,14 @@ class UserListWidget extends ConsumerWidget {
       ),
     );
   }
-}`}</code>
-      </pre>
-
-      <h2>Shopping Cart</h2>
-      <p>
-        Complex state management with multiple related providers and computed values.
-      </p>
-      <pre>
-        <code>{`// models/product.dart
+}`,
+  },
+  {
+    title: "Shopping Cart",
+    description:
+      "Complex state management with multiple related providers and computed values.",
+    fileName: "cart_example.dart",
+    code: `// models/product.dart
 class Product {
   final String id;
   final String name;
@@ -254,15 +244,13 @@ int cartItemCount(CartItemCountRef ref) {
     0,
     (sum, item) => sum + item.quantity,
   );
-}`}</code>
-      </pre>
-
-      <h2>Form Validation</h2>
-      <p>
-        Handle form state and validation with Riverpod providers.
-      </p>
-      <pre>
-        <code>{`// providers/login_form.dart
+}`,
+  },
+  {
+    title: "Form Validation",
+    description: "Handle form state and validation with Riverpod providers.",
+    fileName: "login_form.dart",
+    code: `// providers/login_form.dart
 class LoginFormState {
   final String email;
   final String password;
@@ -347,22 +335,57 @@ class LoginForm extends _$LoginForm {
       state = state.copyWith(isLoading: false);
     }
   }
-}`}</code>
-      </pre>
+}`,
+  },
+];
 
-      <div className="mt-8 rounded-lg border border-green-200 bg-green-50 p-6">
-        <h3 className="!mt-0 text-lg font-semibold text-green-800">
-          📚 More Examples
-        </h3>
-        <p className="!mb-0 text-green-700">
-          Looking for more examples? Check out our{" "}
-          <a href="https://github.com" className="font-semibold underline">
-            GitHub repository
-          </a>{" "}
-          for complete sample applications including authentication, database
-          integration, and complex UI patterns.
+export default function ExamplesPage() {
+  return (
+    <>
+      <section className="space-y-4">
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          Examples
+        </h1>
+        <p className="text-base leading-7 text-slate-600">
+          Learn Riverpod through real-world examples. Each example includes full
+          source code, explanation, and best practices.
         </p>
-      </div>
-    </DocsShell>
+      </section>
+
+      {examples.map((example) => (
+        <section key={example.title} className="space-y-5">
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-slate-900">
+              {example.title}
+            </h2>
+            <p className="text-sm leading-6 text-slate-600">
+              {example.description}
+            </p>
+          </div>
+
+          <CodeBloack
+            language="dart"
+            fileName={example.fileName}
+            code={example.code}
+          />
+        </section>
+      ))}
+
+      <section>
+        <div className="rounded-xl border border-green-200 bg-green-50 p-6">
+          <h3 className="text-lg font-semibold text-green-800">
+            More Examples
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-green-700">
+            Looking for more examples? Check out our{" "}
+            <a href="https://github.com" className="font-semibold underline">
+              GitHub repository
+            </a>{" "}
+            for complete sample applications including authentication, database
+            integration, and complex UI patterns.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
